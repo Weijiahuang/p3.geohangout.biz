@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title> Create your climbing Wall </title>
+	
+	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/stickers.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	</head>
+
+<body>
+<div id ="banner">
+<h1> Create your climbing Wall <h1>
+</div>
+
+<div id='wrapper'>
+
+	<div id='controls'>	
+	<!-- Texture picture -->
+			<h2>Board layout</h2>
+			<div class='textures' id='diamond'></div>
+			<div class='textures' id='random'></div>
+			<div class='textures' id='square'></div>
+			<div class='clearfix'></div>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+		<h2>Click a sticker to add</h2>
+	<div id="accordion">
+	<h3>Jugs</h3>
+	<div>		
+		<img class='stickers' src='images/orange1.png' alt='Jugs sticker'>
+		<img class='stickers' src='images/orange2.png' alt='Jugs sticker'>
+		<img class='stickers' src='images/orange3.png' alt='Jugs sticker'>
+		<img class='stickers' src='images/orange4.png' alt='Jugs sticker'>
+		<img class='stickers' src='images/orange5.png' alt='Jugs sticker'>
+		<img class='stickers' src='images/orange6.png' alt='Jugs sticker'>
+		<br>
+	</div>
+	<h3>Mini-Jugs and Incuts</h3>
+  <div>
+    <p>
+    <img class='stickers' src='images/yellow1.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow2.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow3.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow4.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow5.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow6.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow7.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow8.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow9.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow10.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow11.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow12.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow13.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow14.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow15.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow16.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow17.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow18.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow19.png' alt='Mini-Jugs sticker'>
+	<img class='stickers' src='images/yellow20.png' alt='Mini-Jugs sticker'>
+    </p>
+  </div>
+  <h3>Slopers</h3>
+  <div>
+    <p>
+	<img class='stickers' src='images/blue1.png' alt='Slopers sticker'>
+	<img class='stickers' src='images/blue2.png' alt='Slopers sticker'>
+	<img class='stickers' src='images/blue3.png' alt='Slopers sticker'>
+	<img class='stickers' src='images/blue4.png' alt='Slopers sticker'>
+    </p>
+  </div>
+  <h3>Pockets</h3>
+  <div>
+    <p>
+    <img class='stickers' src='images/purple1.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple2.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple3.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple4.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple5.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple6.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple7.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple8.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple9.png' alt='Pockets sticker'>
+	<img class='stickers' src='images/purple10.png' alt='Pockets sticker'>
+  </div>
+</div>
+	
+	
+	
+		<small>Find your own from Google</small><br>
+		<input type='text' id='sticker-search'>
+		<input type='button' id='sticker-search-btn' value='Search'>
+		<br>
+		<small>Ex: &ldquo;unicorns&rdquo;, &ldquo;sparkles&rdquo;, &ldquo;balloons&rdquo;</small>
+		<div id='sticker-search-results'></div>
+		</div>
+		
+		<!-- Right side with the live preview -->
+	<div id='preview'>
+	
+			<div id='canvas'>
+			</div>
+		
+		<!-- Buttons -->
+		<input type='button' id='Startover' value='Start over'>
+		<input type='button' id='print-btn' value='Print'>
+	</div>
+		
+		
+<div>
+<script >
+$('#controls').on('click', '.stickers', function() {
+
+	// Clone the sticker that was clicked
+	var new_sticker = $(this).clone();
+	
+	// A class so we can position stickers on the
+	new_sticker.addClass('stickers_on_card');
+	
+	// Inject the new image into the canvas
+	$('#canvas').prepend(new_sticker);
+	
+	// Make that puppy draggable
+	new_sticker.draggable({containment: '#canvas', opacity:.35});
+		
+});
+
+/*-------------------------------------------------------------------------------------------------
+Texture picker
+-------------------------------------------------------------------------------------------------*/
+$('.textures').click(function() {
+
+	// Figure out which image we should use
+	var chosen_texture = $(this).css('background-image');
+	
+	// Change the background image of the canvas
+	$('#canvas').css('background-image', chosen_texture);
+
+});	
+
+$(function() {
+    $( "#accordion" ).accordion({
+      heightStyle: "content"
+    });
+  });
+
+/*-------------------------------------------------------------------------------------------------
+Start over
+-------------------------------------------------------------------------------------------------*/
+$('#Startover').click(function() {
+	
+	// Reset color and texture
+	$('#canvas').css('background-color', 'white');
+	$('#canvas').css('background-image', '');
+	
+	// Clear message and recipient divs
+	$('#message-output').html("");
+	$('#recipient-output').html("");
+		
+	// Remove any stickers
+	$('.stickers_on_card').remove();
+
+});
+
+</script>
+
+
+</body>
+</html>

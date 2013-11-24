@@ -1,0 +1,16 @@
+/*-------------------------------------------------------------------------------------------------
+Stickers
+-------------------------------------------------------------------------------------------------*/
+.stickers {
+	cursor:pointer;
+	z-index:2; /* Make sure it's above the card */
+	height: auto;
+	width:auto;
+}
+
+.stickers_on_card {
+	position:absolute;
+	top:0px;
+	left:0px;
+	cursor:move;
+}
